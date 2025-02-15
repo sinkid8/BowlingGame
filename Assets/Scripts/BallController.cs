@@ -5,10 +5,11 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private float force = 1f;
     [SerializeField] private Transform ballAnchor;
+    [SerializeField] private InputManager inputManager;
 
     private bool isBallLaunched;
     private Rigidbody ballRB;
-    private InputManager inputManager;
+    
 
     void Start()
     {
@@ -23,7 +24,6 @@ public class BallController : MonoBehaviour
     {
         if (isBallLaunched) return;
         isBallLaunched = true;
-
         transform.parent = null;
         ballRB.isKinematic = false;
         ballRB.AddForce(transform.forward * force, ForceMode.Impulse);

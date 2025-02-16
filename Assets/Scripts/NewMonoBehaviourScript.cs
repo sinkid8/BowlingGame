@@ -1,5 +1,5 @@
-using Unity.Cinemachine;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class LaunchIndicator : MonoBehaviour
 {
@@ -7,7 +7,11 @@ public class LaunchIndicator : MonoBehaviour
 
     void Update()
     {
-        transform.forward = freeLookCamera.transform.forward;
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        if (freeLookCamera != null)
+        {
+            // Align with the camera's forward direction but only rotate around Y-axis
+            transform.forward = freeLookCamera.transform.forward;
+            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        }
     }
 }
